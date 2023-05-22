@@ -2,8 +2,8 @@ import requests
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from main import download_image
 import argparse
+import download_image
 
 
 def get_images_list_from_spacex(launch=''):

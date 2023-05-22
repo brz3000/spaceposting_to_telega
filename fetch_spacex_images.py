@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import argparse
-import download_image
+from download_image import download_image
 
 
 def get_images_list_from_spacex(launch=''):

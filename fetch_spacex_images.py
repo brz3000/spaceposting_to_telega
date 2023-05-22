@@ -1,11 +1,10 @@
 import requests
 import os
 from pathlib import Path
-from urllib.parse import urlparse
-from urllib.parse import unquote
 from dotenv import load_dotenv
 from main import download_image
 import argparse
+
 
 def get_images_list_from_spacex(launch=''):
     url_template = 'https://api.spacexdata.com/v5/launches/{}'
@@ -15,6 +14,7 @@ def get_images_list_from_spacex(launch=''):
     response = requests.get(url)
     response.raise_for_status()
     return response.json()['links']['flickr']['original']
+
 
 if __name__ == '__main__':
     Path("./images").mkdir(parents=True, exist_ok=True)
@@ -29,4 +29,3 @@ if __name__ == '__main__':
     for image_number, image_url in enumerate(get_images_list_from_spacex(args.l)):
         filename = f'./images/spacex{image_number}.jpeg'
         download_image(image_url, filename)
-

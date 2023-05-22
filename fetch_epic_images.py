@@ -2,7 +2,7 @@ import requests
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from main import download_image
+from download_image import download_image
 
 
 def get_epic_image_list(token):

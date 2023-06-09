@@ -1,7 +1,6 @@
 import requests
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 import argparse
 from download_image import download_image
 
@@ -20,8 +19,6 @@ if __name__ == '__main__':
     Path("./images").mkdir(parents=True, exist_ok=True)
     if not os.path.exists("./images"):
         os.makedirs("./images")
-    load_dotenv()
-    token = os.environ['NASA_TOKEN']
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", default='latest', type=str, help="Введите id запуска")
     args = parser.parse_args()

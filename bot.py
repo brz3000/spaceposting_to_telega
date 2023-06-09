@@ -10,12 +10,12 @@ def post_image(bot, image_path):
     bot.send_document(chat_id=chat_id, document=open(image_path, 'rb'))
     return
 
+
 def generate_images_path():
     images_path = []
     for root, dirs, files in os.walk("./images"):
-            for name in files:
-                images_path.append(os.path.join(root, name))
-
+        for name in files:
+            images_path.append(os.path.join(root, name))
     random.shuffle(images_path)
     return images_path
 

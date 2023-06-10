@@ -16,9 +16,7 @@ def get_images_list_from_spacex(launch=''):
 
 
 if __name__ == '__main__':
-    Path("./images").mkdir(parents=True, exist_ok=True)
-    if not os.path.exists("./images"):
-        os.makedirs("./images")
+    os.makedirs("./images", exist_ok=True)
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", default='latest', type=str, help="Введите id запуска")
     args = parser.parse_args()

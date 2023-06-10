@@ -1,11 +1,10 @@
 import requests
 import os
-from pathlib import Path
 import argparse
 from download_image import download_image
 
 
-def get_images_list_from_spacex(launch=''):
+def get_images_from_spacex(launch=''):
     url_template = 'https://api.spacexdata.com/v5/launches/{}'
     if not launch:
         launch = 'latest'
@@ -21,6 +20,6 @@ if __name__ == '__main__':
     parser.add_argument("-l", default='latest', type=str, help="Введите id запуска")
     args = parser.parse_args()
 
-    for image_number, image_url in enumerate(get_images_list_from_spacex(args.l)):
+    for image_number, image_url in enumerate(get_images_from_spacex(args.l)):
         filename = f'./images/spacex{image_number}.jpeg'
         download_image(image_url, filename)

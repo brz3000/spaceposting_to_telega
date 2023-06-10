@@ -20,9 +20,7 @@ def get_epic_image_list(token):
 
 
 if __name__ == '__main__':
-    Path("./images").mkdir(parents=True, exist_ok=True)
-    if not os.path.exists("./images"):
-        os.makedirs("./images")
+    os.makedirs("./images", exist_ok=True)
     load_dotenv()
     token = os.environ['NASA_TOKEN']
 

@@ -4,10 +4,8 @@ import argparse
 from download_image import download_image
 
 
-def get_images_from_spacex(launch=''):
+def get_images_from_spacex(launch='latest'):
     url_template = 'https://api.spacexdata.com/v5/launches/{}'
-    if not launch:
-        launch = 'latest'
     url = url_template.format(launch)
     response = requests.get(url)
     response.raise_for_status()

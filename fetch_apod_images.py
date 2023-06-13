@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 def get_extention_from_url(url):
     url_elements = urlparse(url)
     extention = os.path.splitext(url_elements.path)[1]
-    return f'{extention}'
+    return extention
 
 
 def get_apod_images(token, count=30):
@@ -16,10 +16,7 @@ def get_apod_images(token, count=30):
     params = {'api_key': token, 'count': count}
     response = requests.get(url, params=params)
     response.raise_for_status()
-    apod_urls = []
-    for apod in response.json():
-        apod_urls.append(apod['url'])
-    return apod_urls
+    return [apod['url'] for apod in response.json()]
 
 
 if __name__ == '__main__':
@@ -28,5 +25,5 @@ if __name__ == '__main__':
     token = os.environ['NASA_TOKEN']
 
     for image_number, image_url in enumerate(get_apod_images(token)):
-        filename = f'./images/nasa_apod_{image_number}{get_extention_from_url(image_url)}'
-        download_image(image_url, filename)
+        file_path = f'./images/nasa_apod_{image_number}{get_extention_from_url(image_url)}'
+        download_image(image_url, file_path)

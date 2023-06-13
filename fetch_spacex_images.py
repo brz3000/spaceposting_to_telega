@@ -21,5 +21,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     for image_number, image_url in enumerate(get_images_from_spacex(args.l)):
-        filename = f'./images/spacex{image_number}.jpeg'
-        download_image(image_url, filename)
+        file_path = f'./images/spacex{image_number}.jpeg'
+        download_image(image_url, file_path)

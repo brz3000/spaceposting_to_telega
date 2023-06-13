@@ -2,8 +2,6 @@ import requests
 import os
 from dotenv import load_dotenv
 from download_image import download_image
-import urllib.parse
-
 
 
 def get_epic_images(token):
@@ -29,4 +27,3 @@ if __name__ == '__main__':
     for image_number, image_url in enumerate(get_epic_images(token)):
         file_path = f'./images/nasa_epic_{image_number}.png'
         download_image(image_url, file_path, params)
-

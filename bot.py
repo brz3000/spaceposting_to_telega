@@ -23,8 +23,11 @@ def generate_images_path():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--timeout", default='240', type=int, help="Введите через какое количество минут постить")
+    parser = argparse.ArgumentParser(description='''<Bot for auto POST image to telegram every 240 min by default.
+                                                 Use --timeout argument for change timeout. Example use
+                                                 "python bot.py --timeout 1"
+                                                 for post image every one minutes>''')
+    parser.add_argument("--timeout", default='240', type=int, help="Enter in how many minutes to post")
     args = parser.parse_args()
     load_dotenv()
     token = os.environ['TLG_TOKEN']

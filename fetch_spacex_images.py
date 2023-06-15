@@ -14,8 +14,11 @@ def get_images_from_spacex(launch='latest'):
 
 if __name__ == '__main__':
     os.makedirs("./images", exist_ok=True)
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-l", default='latest', type=str, help="Введите id запуска")
+    parser = argparse.ArgumentParser(description='''<Script for download launch images from SpaceX REST API.
+                                                 By default downloading image from latest launch.
+                                                 You may use -l argument for ask how  launch  do you need. Example
+                                                 "python fetch_spacex_images.py -l 5eb87d47ffd86e000604b38a" >''')
+    parser.add_argument("-l", default='latest', type=str, help="Input id launch")
     args = parser.parse_args()
 
     for image_number, image_url in enumerate(get_images_from_spacex(args.l)):
